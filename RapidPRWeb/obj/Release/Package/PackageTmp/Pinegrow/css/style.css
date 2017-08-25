@@ -1,0 +1,39 @@
+
+
+#body_content
+{
+    padding: 20px;
+}
+
+.bottom_content
+{
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+}
+.bottom_copy_data {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.bottomRow
+{
+    padding-right: 30px;
+    padding-bottom: 30px;
+}
+
+.header_row
+{
+    background-color: rgba(17, 198, 203, 0.54);
+}
+
+.my-nav
+{
+    background-color: #2C3E50;
+}
+
+.navbar-default .navbar-nav > li > a
+{
+    color: #ffffff;
+}

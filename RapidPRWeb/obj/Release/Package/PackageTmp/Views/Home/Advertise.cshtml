@@ -1,0 +1,93 @@
+﻿@{
+    if (ViewBag.msg != null)
+    {
+        <div class="alert alert-success">
+            <strong>@ViewBag.msg</strong>.
+        </div>
+    }
+}
+<table class="table">
+    <thead>
+    <tr class="header_row">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Duration (sec)</th>
+        <th>Box Number</th>
+        <th>Publish</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="x in AllAdvertise">
+            <td>{{x.AdvertiseId}}</td>
+            <td>{{x.AdvertiseName}}</td>
+            
+                <td>
+                    <input type="text" class="form-control" placeholder="input live time in sec" ng-model="x.LiveDurationInSec">
+                </td>
+
+                <td>
+                    @*<select class="selectpicker" ng-model="x.BoxName">
+                        <option value="L-1">L-1</option>
+                        <option value="L-2">L-2</option>
+                        <option value="L-3">L-3</option>
+
+                        <option value="M-1">M-1</option>
+                        <option value="M-2">M-2</option>
+                        <option value="M-3">M-3</option>
+
+                        <option value="R-1">R-1</option>
+                        <option value="R-2">R-2</option>
+                        <option value="R-3">R-3</option>
+                    </select>*@
+                    <select ng-model="x.BoxName" ng-options="item for item in allbox" class="form-control"></select>
+                </td>
+                <td>
+
+                    <button class="btn btn-block" ng-show="!x.IsPublish" ng-click="publishAdvertise($index)">
+                        publish
+                    </button>
+                    <button class="btn btn-block btn-success hide_element" ng-show="x.IsPublish" ng-click="publishAdvertise($index)">Cancel</button>
+
+                </td>
+            <td style="margin: 6px">
+                <form action="/home/DeleteAdvertise" method="POST">
+                    <input type="hidden" value="{{x.AdvertiseId}}" name="id" />
+                    <button class="btn btn-danger" type="submit">
+                        <span class="glyphicon glyphicon-remove-circle"></span>
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+@*<div class="bottom_content">
+    <div class="row bottomRow">
+        <form role="form" action="/home/PostAdvertise" method="POST" enctype="multipart/form-data">
+            <div>
+                <div class="col-md-12">
+                    <input type="file" name="file">
+                </div>
+                <div class="col-md-12">
+                    <input class="btn btn-primary btn-sm" type="submit" style="margin-top: 10px; width: 100%;"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>*@
+<div style="height: 30px">
+
+</div>
+<hr />
+<form role="form" action="/home/PostAdvertise" method="POST" enctype="multipart/form-data">
+    <div>
+        <div class="col-md-12">
+            <input type="file" name="file">
+        </div>
+        <div class="col-md-12">
+            <input class="btn btn-primary btn-sm" type="submit" style="margin-top: 10px; width: 100%;" />
+        </div>
+    </div>
+</form>
+{{getAllAdvertise()}}

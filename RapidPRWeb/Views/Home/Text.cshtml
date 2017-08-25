@@ -1,0 +1,74 @@
+﻿@{
+    if (ViewBag.msg != null)
+    {
+        <div class="alert alert-success">
+            <strong>@ViewBag.msg</strong>.
+        </div>
+    }
+}
+<table class="table">
+    <thead>
+    <tr class="header_row">
+        <th>ID</th>
+        <th>Text</th>
+        <th>Action</th>
+        <th>Publish</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="x in AllText">
+        <td>{{x.TextId}}</td>
+        <td>{{x.TextContent}}</td>
+        <td style="margin: 6px">
+            <form action="/home/DeleteText" method="POST">
+                <input type="hidden" value="{{x.TextId}}" name="id" />
+                <button class="btn btn-danger" type="submit">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                    Delete
+                </button>
+            </form>
+        </td>
+        <td style="margin: 6px">
+            <form action="/home/TextPublish" method="POST">
+                <button class="btn btn-block" ng-show="{{x.IsPublishNow==false}}" type="submit" name="id" value="{{x.TextId}}">
+                    publish
+                </button>
+                <button class="btn btn-block btn-success" ng-show="{{x.IsPublishNow==true}}" type="submit" name="id" value="{{x.TextId}}">Cancel</button>
+            </form>
+        </td>
+    </tr>
+    @*<tr>
+        <td>1</td>
+        <td>আজ মামা ভাগ্নে লড়াই</td>
+        <td style="margin: 6px">
+            <button class="btn btn-danger">
+                <span class="glyphicon glyphicon-remove-circle"></span>
+                Delete
+            </button>
+        </td>
+        <td style="margin: 6px">
+            <button class="btn btn-block btn-success">Cancel</button>
+        </td>
+    </tr>*@
+    </tbody>
+</table>
+@*<div class="bottom_content">
+    <div class="row bottomRow">
+        
+    </div>
+</div>*@
+<div style="height: 30px">
+
+</div>
+<hr />
+<form role="form" action="/home/PostText" method="POST">
+    <div>
+        <div class="col-md-12">
+            <input type="text" class="form-control" placeholder="Input your text" name="text">
+        </div>
+        <div class="col-md-12">
+            <input class="btn btn-primary btn-sm" type="submit" style="margin-top: 10px; width: 100%;" />
+        </div>
+    </div>
+</form>
+{{getAllText()}}

@@ -1,0 +1,71 @@
+﻿@**********************************Modal****************************************************@
+
+
+<div class="modal fade pg-show-modal" id="modalerror" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modalheader" data-pg-collapsed>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <span class="glyphicon glyphicon-remove-circle erroricon"></span>
+            </div>
+            <div class="modal-body modaltext">
+                <div class="row" data-pg-collapsed>
+                    <h1 class="text-center">Error !!! </h1>
+                </div>
+                <p class="text-center exceptionmsg">{{errormsg}}</p>
+                <div class="row closebuttoncontainer">
+                    <button type="button" class="btn btn-danger closebutton btn-lg" ng-click="closemeerror()">
+                        <span class="glyphicon glyphicon-remove"></span> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade pg-show-modal" id="modalsuccess" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="true" data-pg-collapsed>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header modalheadersuccess" data-pg-collapsed>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <span class="glyphicon erroricon glyphicon-ok-circle"></span>
+            </div>
+            <div class="modal-body modaltext">
+                <div class="row" data-pg-collapsed>
+                    <h1 class="text-center">Great !!! </h1>
+                </div>
+                <p class="text-center exceptionmsg">{{successmsg}}</p>
+                <div class="row closebuttoncontainer">
+                    <button type="button" class="btn btn-danger closebutton btn-lg" ng-click="closemesuccess()">
+                        <span class="glyphicon glyphicon-remove"></span> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade pg-show-modal" id="modalconfirm" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="true" data-pg-collapsed>
+    <div class="modal-dialog" style="position: static;">
+        <div class="modal-content">
+            <div class="modal-header modalheaderconfirm" data-pg-collapsed>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <span class="glyphicon erroricon glyphicon-question-sign"></span>
+            </div>
+            <div class="modal-body modaltext">
+                <div class="row" data-pg-collapsed>
+                    <h1 class="text-center">Are you want to sure?</h1>
+                </div>
+                <p class="text-center exceptionmsg">{{confirmmsg}}</p>
+                <div class="row closebuttoncontainer">
+                    <button type="button" class="btn btn-danger closebutton btn-lg" ng-click="closemeconfirm()" data-pg-collapsed>
+                        <span class="glyphicon glyphicon-remove"></span> Close
+                    </button>
+                    <button type="button" class="btn btn-lg okbutton btn-success" ng-click="confirm()" data-pg-collapsed>
+                        <span class="glyphicon glyphicon-ok"></span> OK
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@************************************************************************************************************************@

@@ -1,0 +1,71 @@
+﻿@{
+    if (ViewBag.msg != null)
+    {
+        <div class="alert alert-success">
+            <strong>@ViewBag.msg</strong>
+        </div>
+    }
+}
+<table class="table">
+    <thead>
+    <tr class="header_row">
+        <th>ID</th>
+        <th>Video Name</th>
+        <th>Duration</th>
+        <th>Live Link</th>
+        <th>Action</th>
+        <th>Publish</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr ng-repeat="x in AllVideo">
+        <td>{{x.VideoId}}</td>
+        <td>{{x.VideoName}}</td>
+        <td>{{x.VideoDuration}}</td>
+        <td>{{x.VideoLiveLink}}</td>
+        <td style="margin: 6px">
+            <form action="/home/DeleteVideo" method="POST">
+                <input type="hidden" value="{{x.VideoId}}" name="id"/>
+                <button class="btn btn-danger" type="submit">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                    Delete
+                </button>
+            </form>
+        </td>
+        <td style="margin: 6px">
+            <form action="/home/VideoPublish" method="POST">
+                <button class="btn btn-block" ng-show="{{x.NowPublish==false}}" type="submit" name="id" value="{{x.VideoId}}">
+                    publish
+                </button>
+                <button class="btn btn-block btn-success" ng-show="{{x.NowPublish==true}}" type="submit" name="id" value="{{x.VideoId}}">Cancel</button>
+            </form>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+@*<div class="bottom_content">
+    <div class="row bottomRow">
+
+    </div>
+</div>*@
+<div style="height: 30px">
+
+</div>
+<hr/>
+@*<form role="form" action="/home/PostVideo" method="POST" enctype="multipart/form-data">
+    <div>
+        <div class="col-md-12" style="margin-bottom: 5px;">
+            <input type="text" class="form-control" placeholder="Input Live Link" name="link">
+        </div>
+        <div class="col-md-12">
+            <input type="file" id="videoFile" name="file">
+        </div>
+        <div class="col-md-12">
+            <input class="btn btn-primary btn-sm" type="submit" style="margin-top: 10px; width: 100%;"/>
+        </div>
+    </div>
+</form>*@
+<a class="btn btn-block btn-primary" onclick="location.href = '/Home/UploadYoutube';">upload video</a>
+{{getAllVideo()}}
